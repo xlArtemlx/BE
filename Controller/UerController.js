@@ -1,16 +1,12 @@
 const response = require('./../response')
+const db = require('./../settings/db')
 
 exports.users = (req,res) => {
-    const users = [
-        {
-            'id':1,
-            'name':'Alex'
-        },
-        {
-            'id':2,
-            'name':'Marti'
-        },
-    ]
-
-    response.status(users,res)
+    db.query('SELECT * FROM `users`',(error,rows,fields)=>{
+        if(error){
+            console.log(error)
+        } else {
+            response.status(row,res)
+        }
+    })
 }
